@@ -343,6 +343,19 @@ value="<?php echo tohtml(getSettingWithDefault('set-tags-per-page')); ?>" maxlen
 </tr>
 <!-- ******************************************************* -->
 <tr>
+<th class="th1 center">Bookmarklet</th>
+<td class="td1 center" >Drag image to bookmarks bar. </br>(<a href="https://www.youtube.com/watch?v=7O-sruGdcCA">video tutorial</a>)</td>
+<td class="td1 center" colspan="2">
+<a href="javascript: var t=((window.getSelection&&window.getSelection())||(document.getSelection&&document.getSelection())||(document.selection&&document.selection.createRange&&document.selection.createRange().text));var e=(document.charset||document.characterSet);if(t!=''){location.href='
+<?php
+  $fullUrlToSettingsPage = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  $fullUrlToAddTextPage = str_replace_first("settings", "edit_texts", $fullUrlToSettingsPage);
+  echo $fullUrlToAddTextPage;
+?>
+?new=1&textContent='+encodeURIComponent(t)+'&titleContent='+encodeURIComponent(document.title)+'&uriContent='+location.href};"><img src="img/lwt_icon.png" alt="Add text to LWT" title="Drag me to bookmarks bar"></a></td>
+</tr>
+<!-- ******************************************************* -->
+<tr>
 <td class="td1 right" colspan="4"> 
 <input type="button" value="&lt;&lt; Back" onclick="{resetDirty(); location.href='index.php';}" />&nbsp; &nbsp; | &nbsp; &nbsp;
 <input type="button" value="Reset all settings to default" onclick="{resetDirty(); location.href='settings.php?op=reset';}" />&nbsp; &nbsp; | &nbsp; &nbsp;

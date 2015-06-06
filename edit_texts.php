@@ -46,6 +46,9 @@ Call: edit_texts.php?....
       ... sort=[sortcode] ... sort 
       ... page=[pageno] ... page  
       ... query=[titlefilter] ... title filter   
+      ... titleContent ... initial content of title field when for new text
+      ... textContent ... initial content of text field when for new text
+      ... uriContent ... initial content of uri field when for new text
 Manage active texts
 ***************************************************************/
 
@@ -328,17 +331,17 @@ if (isset($_REQUEST['new'])) {
 	</tr>
 	<tr>
 	<td class="td1 right">Title:</td>
-	<td class="td1"><input type="text" class="notempty" name="TxTitle" value="" maxlength="200" size="60" /> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
+	<td class="td1"><input type="text" class="notempty" name="TxTitle" value="<?php echo $_REQUEST['titleContent']; ?>" maxlength="200" size="60"> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" /></td>
 	</tr>
 	<tr>
 	<td class="td1 right">Text:<br /><br />(max.<br />65,000<br />bytes)</td>
 	<td class="td1">
-	<textarea name="TxText" class="notempty checkbytes" data_maxlength="65000" data_info="Text" cols="60" rows="20"></textarea> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
+	<textarea name="TxText" class="notempty checkbytes" data_maxlength="65000" data_info="Text" cols="60" rows="20"><?php echo $_REQUEST['textContent'];?></textarea> <img src="icn/status-busy.png" title="Field must not be empty" alt="Field must not be empty" />
 	</td>
 	</tr>
 	<tr>
 	<td class="td1 right">Source URI:</td>
-	<td class="td1"><input type="text" class="checkurl" data_info="Source URI" name="TxSourceURI" value="" maxlength="1000" size="60" /></td>
+	<td class="td1"><input type="text" class="checkurl" data_info="Source URI" name="TxSourceURI" value="<?php echo $_REQUEST['uriContent']; ?>" maxlength="1000" size="60" /></td>
 	</tr>
 	<tr>
 	<td class="td1 right">Tags:</td>
